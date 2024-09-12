@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+    app:
+        build: ./${DOCKER_PATH}
+        tty: true
+        container_name: ${CONTAINER_NAME}
+        volumes:
+            - ./${REPOSITORY}:/opt/app
+            - node_modules_store:/opt/app/node_modules
+        ports:
+            - '3000:3000'
+        networks:
+            - my_nodejs_network
+
+volumes:
+    node_modules_store:
+
+
+networks:
+    my_nodejs_network:
+        name: my_nodejs_network

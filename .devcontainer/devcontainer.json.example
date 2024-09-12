@@ -1,0 +1,33 @@
+{
+    "name": "nodejs project",
+    "dockerComposeFile": [
+        "./../docker-compose.yml"
+    ],
+    "service": "app",
+    "workspaceFolder": "/opt/app",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "VisualStudioExptTeam.vscodeintellicode",
+                "esbenp.prettier-vscode",
+                "oderwat.indent-rainbow",
+                "bradlc.vscode-tailwindcss"
+            ],
+            "settings": {
+                "[typescript]": {
+                    "editor.formatOnSave": true,
+                    "editor.tabSize": 4,
+                    "editor.defaultFormatter": "esbenp.prettier-vscode"
+                },
+                "[typescriptreact]": {
+                    "editor.formatOnSave": true,
+                    "editor.tabSize": 4,
+                    "editor.defaultFormatter": "esbenp.prettier-vscode"
+                },
+                "editor.tabSize": 4,
+                "editor.insertSpaces": true,
+                "prettier.tabWidth": 4
+            }
+        }
+    },
+}
