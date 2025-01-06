@@ -7,14 +7,14 @@ services:
         container_name: ${CONTAINER_NAME}
         volumes:
             - ./${REPOSITORY}:/opt/app
-            - node_modules_store:/opt/app/node_modules
+            # - node_modules_store:/opt/app/node_modules
         ports:
-            - '3000:3000'
+            - ${HOST_PORT}:${CONTAINER_PORT}
         networks:
             - my_nodejs_network
 
-volumes:
-    node_modules_store:
+# volumes:
+#     node_modules_store:
 
 
 networks:
