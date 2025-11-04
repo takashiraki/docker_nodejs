@@ -1,22 +1,31 @@
-version: '3'
+version: "3"
 
 services:
-    app:
-        build: ./${DOCKER_PATH}
-        tty: true
-        container_name: ${CONTAINER_NAME}
-        volumes:
-            - ./${REPOSITORY}:/opt/app
-            # - node_modules_store:/opt/app/node_modules
-        ports:
-            - ${HOST_PORT}:${CONTAINER_PORT}
-        networks:
-            - my_nodejs_network
+  app:
+    build: ./${DOCKER_PATH}
+    tty: true
+    container_name: ${CONTAINER_NAME}
+    volumes:
+      - ./${REPOSITORY}:/opt/app
+      # - node_modules_store:/opt/app/node_modules
+    environment:
+      VIRTUAL_HOST: ${VIRTUAL_HOST}
+      VIRTUAL_PORT: ${VIRTUAL_PORT}
+      LETSENCRYPT_HOST: ${LETSENCRYPT_HOST}
+      LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
+      LETSENCRYPT_TEST: ${LETSENCRYPT_TEST}
+      CERT_NAME: ${CERT_NAME}
+      TZ: Asia/Tokyo
+    networks:
+      - my_nodejs_network
+      - my_proxy_network
 
 # volumes:
 #     node_modules_store:
 
-
 networks:
-    my_nodejs_network:
-        name: my_nodejs_network
+  my_nodejs_network:
+    name: my_nodejs_network
+  my_proxy_network:
+    external: true
+    name: my_proxy_network
